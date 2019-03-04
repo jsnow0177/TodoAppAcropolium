@@ -8,10 +8,13 @@ use Puppy\Http\Request;
 use Puppy\ModelFactory;
 use Puppy\Storing\Config;
 use Puppy\ViewFactory;
+use TodoApp\Controllers\Auth;
 use TodoApp\Controllers\Main;
 
 DEFINE('PUBLIC_DIR', dirname(__FILE__));
 DEFINE('ROOT_DIR', dirname(PUBLIC_DIR));
+
+session_start();
 
 require_once('../../vendor/autoload.php');
 
@@ -51,6 +54,7 @@ $todoapp = new Application($container);
 
 // --- Объявление маршрутов
 $todoapp->Route('frontend', '/^\/(?<action>[A-z0-9_\-]+)$/', Main::class, '%action%');
+$todoapp->Route('auth', '/^\/auth\/(?<action>[A-z0-9_\-]+)$/', Auth::class, '%action%');
 $todoapp->Route('index', '/^\/$/', Main::class, 'index');
 
 $response = $todoapp->Handle(Request::FromGlobal());
