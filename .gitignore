@@ -1,0 +1,11 @@
+# Ignore PHPStorm files
+.idea
+
+# Ignore composer vendor directory
+**/vendor
+
+# Ignore nginx logs directory
+nginx/logs
+
+#Ignore mysql data directory
+mysql/data

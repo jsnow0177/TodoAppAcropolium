@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "TodoApp\\": "app/src/",
+            "Puppy\\": "puppy/src/",
+            "Puppy\\Test\\": "puppy/tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    }
+}
