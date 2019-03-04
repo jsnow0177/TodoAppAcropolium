@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit
+    colors="true"
+    bootstrap="../vendor/autoload.php"
+    >
+
+    <testsuites>
+        <testsuite name="Puppy's tests">
+            <directory suffix="Test.php" phpVersion="7.0.0" phpVersionOperator=">=">tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
