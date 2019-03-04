@@ -6,9 +6,9 @@ environments:
   default_database: todoapp_db
   todoapp_db:
     adapter: mysql
-    host: %%PHINX_DBHOST%%
-    name: %%PHINX_DBNAME%%
-    user: %%PHINX_DBUSER%%
-    pass: %%PHINX_DBPASS%%
+    host: "%%PHINX_DBHOST%%"
+    name: "%%PHINX_DBNAME%%"
+    user: "%%PHINX_DBUSER%%"
+    pass: "%%PHINX_DBPASS%%"
     port: 3306
     charset: utf8
