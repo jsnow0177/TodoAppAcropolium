@@ -88,6 +88,11 @@ abstract class AbstractController{
                 ->WithBody($result->Render());
         }
 
+        $responseClass = Response::class;
+        if(is_object($result) && ($result instanceof $responseClass)){
+            return $result;
+        }
+
         return new Response();
     }
 
