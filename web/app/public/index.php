@@ -42,7 +42,7 @@ $container->Set('pdo', function(IContainer $container){
 
 $container->Set('modelFactory', function(IContainer $container){
     /** @var \PDO $pdo */
-    $pdo = $container->Get('db');
+    $pdo = $container->Get('pdo');
 
     return new ModelFactory($pdo);
 });
@@ -51,6 +51,7 @@ $todoapp = new Application($container);
 
 // --- Объявление маршрутов
 $todoapp->Route('frontend', '/^\/(?<action>[A-z0-9_\-]+)$/', Main::class, '%action%');
+$todoapp->Route('index', '/^\/$/', Main::class, 'index');
 
 $response = $todoapp->Handle(Request::FromGlobal());
 $response->Send();

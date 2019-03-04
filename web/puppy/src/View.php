@@ -33,6 +33,7 @@ class View{
 
         $this->viewPath = $viewPath;
         $this->viewBag = [];
+        $this->partials = [];
     }
 
     /**

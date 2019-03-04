@@ -31,7 +31,8 @@ class ModelFactory{
         if(!class_exists($modelClass))
             throw new \InvalidArgumentException("Invalid model class specified");
 
-        if(!($modelClass instanceof (AbstractModel::class)))
+        $abstractModelCalss = AbstractModel::class;
+        if(!($modelClass instanceof $abstractModelCalss))
             throw new \InvalidArgumentException("Specified model class is not implements " . AbstractModel::class);
 
         return (new $modelClass($this->pdo));
