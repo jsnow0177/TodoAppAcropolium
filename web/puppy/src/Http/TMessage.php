@@ -72,10 +72,9 @@ trait TMessage{
      */
     public function WithCookies(array $cookies): IMessage
     {
-        $cookieClass = Cookie::class;
 
         foreach($cookies as $cookie) {
-            if (!is_object($cookie) || !($cookie instanceof $cookieClass))
+            if (!is_object($cookie) || !is_a($cookie, Cookie::class))
                 throw new \InvalidArgumentException("Invalid cookies specified");
         }
 
