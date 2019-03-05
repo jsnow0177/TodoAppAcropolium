@@ -22,7 +22,7 @@ abstract class AbstractController{
      */
     private $actionsList;
 
-    private const ANNOTATION_ACTION_PATTERN = '/@action\s+(?<action>[A-z0-9_\-]+)/';
+    private const ANNOTATION_ACTION_PATTERN = '/@action\s+(?<action>[A-z0-9_\-\.]+)/';
 
     /**
      * Controller constructor.
