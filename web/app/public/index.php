@@ -34,7 +34,7 @@ $container->Set('viewFactory', function(IContainer $container){
 $container->Set('pdo', function(IContainer $container){
     /** @var Config $config */
     $config = $container->Get('config');
-    $dsn = 'mysql:host=%s;db=%s';
+    $dsn = 'mysql:host=%s;dbname=%s';
 
     return new \PDO(
         sprintf($dsn, $config->Get('db.host'), $config->Get('db.name')),
@@ -53,8 +53,8 @@ $container->Set('modelFactory', function(IContainer $container){
 $todoapp = new Application($container);
 
 // --- Объявление маршрутов
-$todoapp->Route('frontend', '/^\/(?<action>[A-z0-9_\-]+)$/', Main::class, '%action%');
-$todoapp->Route('auth', '/^\/auth\/(?<action>[A-z0-9_\-]+)$/', Auth::class, '%action%');
+$todoapp->Route('frontend', '/^\/(?<action>[A-z0-9_\-]+)\/$/', Main::class, '%action%');
+$todoapp->Route('auth', '/^\/auth\/(?<action>[A-z0-9_\-]+)\/$/', Auth::class, '%action%');
 $todoapp->Route('index', '/^\/$/', Main::class, 'index');
 
 $response = $todoapp->Handle(Request::FromGlobal());

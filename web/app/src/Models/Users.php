@@ -69,7 +69,7 @@ class Users extends AbstractModel{
         $userId = (int)$this->pdo->lastInsertId();
 
         return [
-            'id' => $userId,
+            'user_id' => $userId,
             'login' => $login
         ];
     }
