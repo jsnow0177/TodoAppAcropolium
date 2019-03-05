@@ -17,7 +17,7 @@ class Users extends AbstractModel{
      */
     public function Get(string $login): ?array
     {
-        $stmt = $this->pdo->prepare("SELECT id, login FROM `users` WHERE login=?");
+        $stmt = $this->pdo->prepare("SELECT user_id, login FROM `users` WHERE login=?");
         $res = $stmt->execute([$login]);
 
         if($res !== false){
@@ -36,7 +36,7 @@ class Users extends AbstractModel{
      */
     public function GetById(int $id): ?array
     {
-        $stmt = $this->pdo->query("SELECT id, login FROM `users` WHERE id=" . $id);
+        $stmt = $this->pdo->query("SELECT user_id, login FROM `users` WHERE user_id=" . $id);
         if($stmt !== false){
             $user = $stmt->fetch(\PDO::FETCH_ASSOC);
             if($user !== false && !empty($user))
