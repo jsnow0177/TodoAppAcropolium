@@ -63,6 +63,25 @@ class Tasks extends AbstractModel{
 
     /**
      * @param int $user_id
+     * @return array
+     */
+    public function List(int $user_id): array{
+        $stmt = $this->pdo->query("SELECT * FROM `tasks` WHERE `user_id`='" . $user_id . "' ORDER BY `created` DESC");
+        if($stmt !== false){
+            $tasks = array_map(function($task){
+                $task['title'] = htmlspecialchars($task['title'], ENT_QUOTES);
+                $task['body'] = htmlspecialchars($task['body'], ENT_QUOTES);
+                return $task;
+            }, $stmt->fetchAll(\PDO::FETCH_ASSOC));
+
+            return $tasks;
+        }
+
+        return [];
+    }
+
+    /**
+     * @param int $user_id
      * @param int $task_id
      * @param string $title
      * @param string $body

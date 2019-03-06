@@ -17,6 +17,12 @@ use TodoApp\Models\Users;
  */
 class Main extends Controller{
 
+    private $taskStatuses = [
+        'new' => 'Новая задача',
+        'active' => 'Активная задача',
+        'done' => 'Выполненная задача'
+    ];
+
     private $newTaskAllowedStatuses = [
         'new' => 'Новая задача',
         'active' => 'Активная задача'
@@ -108,7 +114,18 @@ class Main extends Controller{
         if(!isset($_SESSION['authorized']))
             return $this->redirect('/auth/login');
 
+        /** @var Tasks $tasks */
+        $tasks = $this->model(Tasks::class);
 
+        $view = $this->view('main/list')
+            ->Set('tasks', $tasks->List((int)$_SESSION['user_id']))
+            ->Set('statuses', $this->taskStatuses);
+
+        $view
+            ->AddPartial('header', $this->view('header'))
+            ->AddPartial('footer', $this->view('footer'));
+
+        return $view;
     }
 
     /**
@@ -180,6 +197,29 @@ class Main extends Controller{
         }catch(ModelException $ex){
             return $this->jsonError($ex->getMessage(), $ex->getCode());
         }
+    }
+
+    /**
+     * @action task.delete
+     * @param IRequest $request
+     * @return IResponse
+     */
+    protected function TaskDelete(IRequest $request){
+        if(!isset($_SESSION['authorized']))
+            return $this->jsonError('Для того, чтобы удалить задачу необходимо авторизоваться', 1);
+
+        $post = $request->GetPostParams();
+
+        if(!isset($post['task_id']) || !is_numeric($post['task_id']))
+            return $this->jsonError('Не удалось идентифицировать задачу', 2);
+
+        $task_id = (int)$post['task_id'];
+
+        /** @var Tasks $tasks */
+        $tasks = $this->model(Tasks::class);
+        $isDeleted = $tasks->Delete((int)$_SESSION['user_id'], $task_id);
+
+        return $this->jsonSuccess(['deleted' => $isDeleted]);
     }
 
 }
