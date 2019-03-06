@@ -137,4 +137,14 @@ class Controller extends AbstractController{
         return $response;
     }
 
+    /**
+     * @param string $location
+     * @return IResponse
+     */
+    protected function redirect(string $location): IResponse{
+        /** @var IResponse $response */
+        $response = (new Response())->WithHeader('Location', $location);
+        return $response;
+    }
+
 }

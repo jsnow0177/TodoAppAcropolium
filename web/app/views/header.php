@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Тудулист</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/flatly.bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/noty.css" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -25,6 +26,12 @@
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Добавить задачу</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/list">Список задач</a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/auth/logout">Выйти</a>
             </li>

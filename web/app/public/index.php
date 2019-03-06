@@ -53,7 +53,7 @@ $container->Set('modelFactory', function(IContainer $container){
 $todoapp = new Application($container);
 
 // --- Объявление маршрутов
-$todoapp->Route('frontend', '/^\/(?<action>[A-z0-9_\-]+)\/$/', Main::class, '%action%');
+$todoapp->Route('frontend', '/^\/(?<action>[A-z0-9_\-\.]+)\/$/', Main::class, '%action%');
 $todoapp->Route('auth', '/^\/auth\/(?<action>[A-z0-9_\-]+)\/$/', Auth::class, '%action%');
 $todoapp->Route('index', '/^\/$/', Main::class, 'index');
 

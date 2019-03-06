@@ -35,6 +35,7 @@
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/noty.js"></script>
 <script type="text/javascript" src="/js/delay.js"></script>
+<script type="text/javascript" src="/js/changeInputState.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         var $form = $('#loginForm'),
@@ -50,23 +51,6 @@
         var loginState = 'default',
             passState = 'default',
             rePassState = 'default'; // default, valid, invalid
-
-        function changeInputState($input, $inputGroup, oldState, newState){
-            if(oldState === newState)
-                return true;
-
-            switch(oldState){
-                case 'valid': $inputGroup.removeClass('has-success'); $input.removeClass('is-valid'); break;
-                case 'invalid': $inputGroup.removeClass('has-danger'); $input.removeClass('is-invalid'); break;
-            }
-
-            switch(newState){
-                case 'valid': $inputGroup.addClass('has-success'); $input.addClass('is-valid'); break;
-                case 'invalid': $inputGroup.addClass('has-danger'); $input.addClass('is-invalid'); break;
-            }
-
-            return true;
-        }
 
         function validateEmail(){
             var email = $inputEmail.val(),
