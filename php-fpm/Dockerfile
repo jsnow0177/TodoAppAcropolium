@@ -1,7 +1,7 @@
 FROM php:7.3-fpm
 
 # Install git
-RUN apt-get update && apt-get install git-core -y
+RUN apt-get update && apt-get install -y git-core
 
 # Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -12,4 +12,5 @@ cd /usr/local/bin && \
 chmod a+x composer
 
 # Install pdo_mysql extension
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql && \
+apt-get install -y libzip-dev && docker-php-ext-install zip
